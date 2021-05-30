@@ -2,15 +2,34 @@ import React, {Component} from 'react';
 
 class Counter extends Component {
     state = {
-        count: 1,
+        count: 0,
         imageUrl: "https://picsum.photos/200",
-        imageAlt: "Its a random photo"
+        imageAlt: "Its a random photo",
+        tags: ['tag1', 'tag2', 'tag3']
     };
 
 /*    styles = {
         fontSize: 20,
         fontWeight: 'bold'
     };*/
+
+    /*constructor() {
+        super();
+        // console.log("constructor", this);
+        this.handleIncrement = this.handleIncrement.bind(this);
+    }
+
+    handleIncrement() {
+        console.log("Increment Clicked", this);
+    }*/
+
+    handleIncrement = (product) => {
+        // console.log("Increment Clicked", this);
+        console.log(product);
+        this.setState({count: this.state.count + 1});
+}
+
+
 
     render() {
 
@@ -26,8 +45,10 @@ class Counter extends Component {
                 <span className={this.getBadgeClasses()}>
                     {this.formatCount()}
                 </span>
-
-                <button className="btn btn-secondary btn-sm">Increment</button>
+                <button onClick={() => this.handleIncrement("one")} className="btn btn-secondary btn-sm">Increment</button>
+                <ul>
+                    {this.state.tags.map(tag => <li key={tag}>{tag}</li>)}
+                </ul>
             </React.Fragment>);
     }
 
