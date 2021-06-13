@@ -4,10 +4,10 @@ import './index.css';
 //import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
-import Counter from './components/counter';
+import Movie from './components/counter';
 
 ReactDOM.render(
-    <Counter/>,
+    <Movie/>,
     document.getElementById('root')
 );
 
