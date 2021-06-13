@@ -8,40 +8,15 @@ class Counter extends Component {
         tags: ['tag1', 'tag2', 'tag3']
     };
 
-/*    styles = {
-        fontSize: 20,
-        fontWeight: 'bold'
-    };*/
-
-    /*constructor() {
-        super();
-        // console.log("constructor", this);
-        this.handleIncrement = this.handleIncrement.bind(this);
-    }
-
-    handleIncrement() {
-        console.log("Increment Clicked", this);
-    }*/
-
     handleIncrement = (product) => {
-        // console.log("Increment Clicked", this);
         console.log(product);
         this.setState({count: this.state.count + 1});
-}
-
-
+    }
 
     render() {
 
         return (
             <React.Fragment>
-                {/*<img src={this.state.imageUrl}  alt={this.state.imageAlt}/>*/}
-                {/*<span style={this.styles} className="badge badge-primary m-2">
-                    {this.formatCount()}
-                </span>*/}
-                {/*<span style={{ fontSize:300 }} className="badge badge-primary m-2">
-                    {this.formatCount()}
-                </span>*/}
                 <span className={this.getBadgeClasses()}>
                     {this.formatCount()}
                 </span>
