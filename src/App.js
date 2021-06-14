@@ -6,7 +6,9 @@ class App extends Component {
   render() {
     return (
         <main className='container'>
-          <Movies/>
+            <div className='table-container'>
+                <Movies/>
+            </div>
         </main>
     );
   }
