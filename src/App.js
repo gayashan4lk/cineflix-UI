@@ -1,15 +1,13 @@
 import React, {Component} from "react";
-import './App.css';
 import Movies from "./components/movies";
+import './App.css';
 
 class App extends Component {
   render() {
     return (
-        <main className='container'>
-            <div className='table-container'>
+            <div className='movie-container'>
                 <Movies/>
             </div>
-        </main>
     );
   }
 }

@@ -1,15 +1,11 @@
 import React, {Component} from "react";
+import Heart from "./heart";
 import {getMovies} from "../services/fakeMovieService";
 
 class Movies extends Component{
     state = {
         movies: getMovies()
     };
-
-    handleDelete = (movie) => {
-        const movies = this.state.movies.filter(m => m._id !== movie._id);
-        this.setState({movies: movies});
-    }
 
     render() {
         const count = this.state.movies.length;
@@ -18,7 +14,8 @@ class Movies extends Component{
         } else {
             return (
                 <div>
-                    <p>Showing {count} movies in the database.</p>
+                    <p>Showing {count} movies in the database. <i className="fa fa-bath" aria-hidden="true"> </i>
+                    </p>
                     <table className='table'>
                         <thead>
                         <tr>
@@ -26,6 +23,7 @@ class Movies extends Component{
                             <th>Genre</th>
                             <th>Stock</th>
                             <th>Rate</th>
+                            <th> </th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -36,6 +34,7 @@ class Movies extends Component{
                                 <td>{movie.genre.name}</td>
                                 <td>{movie.numberInStock}</td>
                                 <td>{movie.dailyRentalRate}</td>
+                                <td><Heart/></td>
                                 <td>
                                     <button onClick={() => this.handleDelete(movie)}
                                             className='btn btn-sm btn-danger'>Delete
@@ -49,6 +48,12 @@ class Movies extends Component{
             );
         }
     }
+
+    handleDelete = (movie) => {
+        const movies = this.state.movies.filter(m => m._id !== movie._id);
+        this.setState({movies: movies});
+    }
+
 }
 
 export default Movies;
