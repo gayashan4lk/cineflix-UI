@@ -2,9 +2,9 @@ import React, {Component} from "react";
 
 class Heart extends Component {
     render() {
-        let classes = "fa fa-lg fa-heart";
-        if (!this.props.liked) {
-            classes += "-o";
+        let classes = "bi bi-heart";
+        if (this.props.liked) {
+            classes += "-fill red";
         }
         return (
             <div className="heart">

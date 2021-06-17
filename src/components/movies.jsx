@@ -14,7 +14,7 @@ class Movies extends Component{
         } else {
             return (
                 <div className="movie-container">
-                    <p>Showing {count} movies in the database. <i className="fa fa-bath" aria-hidden="true"> </i>
+                    <p>Showing {count} movies in the database. <i className="bi bi-heart"> </i>
                     </p>
                     <table className="table">
                         <thead>
