@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Heart from "./common/heart";
+import Pagination from "./common/pagination";
 import {getMovies} from "../services/fakeMovieService";
 
 class Movies extends Component{
@@ -44,13 +45,7 @@ class Movies extends Component{
                         ))}
                         </tbody>
                     </table>
-                    <nav aria-label="movie-page-nav">
-                        <ul className="pagination">
-                            <li className="page-item"><a className="page-link" href="#">1</a></li>
-                            <li className="page-item"><a className="page-link" href="#">2</a></li>
-                            <li className="page-item"><a className="page-link" href="#">3</a></li>
-                        </ul>
-                    </nav>
+                    <Pagination />
                 </div>
             );
         }

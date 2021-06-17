@@ -4,7 +4,7 @@ class Heart extends Component {
     render() {
         let classes = "bi bi-heart";
         if (this.props.liked) {
-            classes += "-fill red";
+            classes += "-fill heart-color";
         }
         return (
             <div className="heart">
