@@ -8,8 +8,6 @@
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^4.6.0",
     "bootstrap-icons": "^1.5.0",
-    "fa-icons": "^0.2.0",
-    "font-awesome": "^4.7.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.0",
     "react-dom": "^17.0.2",
