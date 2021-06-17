@@ -13,10 +13,10 @@ class Movies extends Component{
             return <p>There are no movies in the database.</p>
         } else {
             return (
-                <div>
+                <div className="movie-container">
                     <p>Showing {count} movies in the database. <i className="fa fa-bath" aria-hidden="true"> </i>
                     </p>
-                    <table className='table'>
+                    <table className="table">
                         <thead>
                         <tr>
                             <th>Title</th>
@@ -24,7 +24,7 @@ class Movies extends Component{
                             <th>Stock</th>
                             <th>Rate</th>
                             <th> </th>
-                            <th>Action</th>
+                            <th> </th>
                         </tr>
                         </thead>
                         <tbody>
@@ -44,6 +44,13 @@ class Movies extends Component{
                         ))}
                         </tbody>
                     </table>
+                    <nav aria-label="movie-page-nav">
+                        <ul className="pagination">
+                            <li className="page-item"><a className="page-link" href="#">1</a></li>
+                            <li className="page-item"><a className="page-link" href="#">2</a></li>
+                            <li className="page-item"><a className="page-link" href="#">3</a></li>
+                        </ul>
+                    </nav>
                 </div>
             );
         }

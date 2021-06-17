@@ -5,9 +5,9 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-            <div className='movie-container'>
-                <Movies/>
-            </div>
+        <React.Fragment>
+            <Movies/>
+        </React.Fragment>
     );
   }
 }
