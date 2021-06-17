@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Heart from "./heart";
+import Heart from "./common/heart";
 import {getMovies} from "../services/fakeMovieService";
 
 class Movies extends Component{
