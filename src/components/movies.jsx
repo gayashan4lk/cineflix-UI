@@ -62,7 +62,7 @@ class Movies extends Component{
                                     <td>
                                         <button
                                             onClick={() => this.handleDelete(movie)}
-                                            className='btn btn-sm btn-danger'>Delete
+                                            className="btn btn-sm btn-danger">Delete
                                         </button>
                                     </td>
                                 </tr>

@@ -1,8 +1,9 @@
-import React from 'react';
-import _ from 'lodash'; // lodash is based on _ (underscore.js)
+import React from "react";
+import PropTypes from "prop-types"
+import _ from "lodash"; // lodash is based on _ (underscore.js)
 
 const Pagination = (props) => {
-    const {itemsCount, pageSize, currentPage} = props;
+    const {itemsCount, pageSize, currentPage, onPageChange} = props;
     console.log(currentPage);
 
     const pagesCount = Math.ceil(itemsCount / pageSize);
@@ -18,7 +19,7 @@ const Pagination = (props) => {
             <ul className="pagination">
                 {pages.map(page => (
                     <li key={page} className={page === currentPage ? "page-item active" : "page-item"}>
-                        <a className="page-link" onClick={() => props.onPageChange(page)}>{page}</a>
+                        <a className="page-link" href=" " onClick={() => onPageChange(page)}>{page}</a>
                     </li>
                 ))}
 
@@ -26,6 +27,13 @@ const Pagination = (props) => {
             </ul>
         </nav>
     );
+}
+
+Pagination.propTypes = {
+    itemsCount: PropTypes.number.isRequired,
+    pageSize: PropTypes.number.isRequired,
+    currentPage: PropTypes.number.isRequired,
+    onPageChange: PropTypes.func.isRequired
 }
 
 export default Pagination;

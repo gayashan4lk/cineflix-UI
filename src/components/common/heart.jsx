@@ -8,7 +8,7 @@ class Heart extends Component {
         }
         return (
             <div className="heart">
-                <button onClick={this.props.onClick} className='btn btn-sm'>
+                <button onClick={this.props.onClick} className="btn btn-sm">
                 <i className={classes} aria-hidden="true"> </i>
                 </button>
             </div>
