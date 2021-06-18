@@ -14,3 +14,6 @@
 .heart-color {
   color: #444;
 }
+.page-link {
+  cursor: pointer;
+}
