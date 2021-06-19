@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import Heart from "./common/heart";
+import MoviesTable from "./moviesTable";
 import Pagination from "./common/pagination";
 import ListGroup from "./common/listGroup";
 import {getMovies} from "../services/fakeMovieService";
@@ -15,7 +15,9 @@ class Movies extends Component{
     };
 
     componentDidMount() {
-        const genres = [{ name: "All Genres"}, ...getGenres()];
+        //TODO : if there is no id here React display a warning.
+        // How to get rid of that other than hardcode id?
+        const genres = [{ _id:0, name: "All Genres"}, ...getGenres()];
 
         this.setState({ movies: getMovies(), genres: genres});
     }
@@ -75,35 +77,8 @@ class Movies extends Component{
                         <div className="movie-container">
                             <p>Showing {filtered.length} movies in the database. <i className="bi bi-heart"> </i>
                             </p>
-                            <table className="table">
-                                <thead>
-                                <tr>
-                                    <th>Title</th>
-                                    <th>Genre</th>
-                                    <th>Stock</th>
-                                    <th>Rate</th>
-                                    <th> </th>
-                                    <th> </th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {movies.map(movie => (
-                                    <tr key={movie._id}>
-                                        <td>{movie.title}</td>
-                                        <td>{movie.genre.name}</td>
-                                        <td>{movie.numberInStock}</td>
-                                        <td>{movie.dailyRentalRate}</td>
-                                        <td><Heart liked={movie.liked} onClick={() => this.handleLike(movie)}/></td>
-                                        <td>
-                                            <button
-                                                onClick={() => this.handleDelete(movie)}
-                                                className="btn btn-sm btn-danger">Delete
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
-                                </tbody>
-                            </table>
+                            <MoviesTable movies={movies} onDelete={this.handleDelete} onLike={this.handleLike} />
+
                             <Pagination
                                 itemsCount={filtered.length}
                                 pageSize={pageSize}
