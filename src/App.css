@@ -17,3 +17,7 @@
 .page-link {
   cursor: pointer;
 }
+
+.list-group-item {
+  cursor: pointer;
+}
