@@ -1,6 +1,7 @@
 .App {
   text-align: center;
 }
+
 .movie-container {
   min-height: 30vh;
   display: flex;
@@ -20,4 +21,9 @@
 
 .list-group-item {
   cursor: pointer;
+}
+
+.login-form-container {
+    max-width: 400px;
+    min-width: 100px;
 }
