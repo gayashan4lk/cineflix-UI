@@ -14,23 +14,28 @@ class LoginForm extends Component {
     }*/
 
     validate = () => {
-        return { username: "Username is required." };
+        const errors = {};
+        const {account} = this.state;
+        if (account.username.trim() === "")
+            errors.username = "Username is required.";
+        if (account.password.trim() === "")
+            errors.password = "Password is required.";
+        return Object.keys(errors).length === 0 ? null : errors;
     };
 
     handleSubmit = e => {
+        // console.log("submit clicked");
+
         e.preventDefault(); // prevents submitting the form to the server
         const errors = this.validate();
-        this.setState({errors});
+        this.setState({errors: errors || {}}); // If errors is null then passes empty object. If not runtime error occurs
+        console.log(errors);
         if (errors) return;
 
         // Call the server -> save the changes -> redirect user to a another page
-
         /*const username = this.username.current.value;*/
-        console.log("submit clicked");
         console.log ("username: ", this.state.account.username);
         console.log ("password: ", this.state.account.password);
-
-
     };
 
     handleChange = ({ currentTarget: input }) => {
@@ -46,14 +51,14 @@ class LoginForm extends Component {
     }*/
 
     render() {
-        const { account } = this.state; // Object destructuring
-        console.log (account);
+        const { account, errors } = this.state; // Object destructuring
+        // console.log (account);
         return (
             <div className="login-form-container">
                 <h1>Login</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <Input name={"username"} value={account.username} label={"Username"} onChange={this.handleChange} />
-                    <Input name={"password"} value={account.password} label={"Password"} onChange={this.handleChange} />
+                    <Input name={"username"} value={account.username} label={"Username"} onChange={this.handleChange} error={errors.username} />
+                    <Input name={"password"} value={account.password} label={"Password"} onChange={this.handleChange} error={errors.password} />
                     <button type="submit" className="btn btn-primary">Login</button>
                 </form>
             </div>
