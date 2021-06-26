@@ -1,7 +1,6 @@
 import React, {Component} from "react";
-import Input from "./common/input";
 
-class LoginForm extends Component {
+class LoginFormOld extends Component {
     state = {
         account : {username: "", password: "" }
     }
@@ -18,7 +17,7 @@ class LoginForm extends Component {
 
         /*const username = this.username.current.value;*/
         console.log("submit clicked");
-        console.log ("username: ", this.state.account.username);
+        console.log ("user name: ", this.state.account.username);
         console.log ("password: ", this.state.account.password);
     };
 
@@ -41,8 +40,28 @@ class LoginForm extends Component {
             <div className="login-form-container">
                 <h1>Login</h1>
                 <form onSubmit={this.handleSubmit}>
-                    <Input name={"username"} value={account.username} label={"Username"} onChange={this.handleChange} />
-                    <Input name={"password"} value={account.password} label={"Password"} onChange={this.handleChange} />
+                    <div className="form-group mb-3">
+                        <label htmlFor="username" className="form-label">User name</label>
+                        <input
+                            value={account.username}
+                            name="username"
+                            onChange={this.handleChange}
+                            autoFocus
+                            /*ref={this.username}*/
+                            id="username"
+                            type="text" 
+                            className="form-control" />
+                    </div>
+                    <div className="form-group mb-3">
+                        <label htmlFor="password" className="form-label">Password</label>
+                        <input
+                            value={account.password}
+                            name="password"
+                            onChange={this.handleChange}
+                            id="password"
+                            type="password"
+                            className="form-control"  />
+                    </div>
                     <button type="submit" className="btn btn-primary">Login</button>
                 </form>
             </div>
@@ -50,4 +69,4 @@ class LoginForm extends Component {
     }
 }
 
-export default LoginForm;
+export default LoginFormOld;
