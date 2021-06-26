@@ -18,6 +18,9 @@ const NavBar = () => {
                         <NavLink className="nav-link" to="/rentals"><b>Rentals</b></NavLink>
                     </li>
                     <li className="nav-item">
+                        <NavLink className="nav-link" to="/login"><b>Login</b></NavLink>
+                    </li>
+                    <li className="nav-item">
                         <NavLink className="nav-link disabled" to="disabled"><b>Disabled</b></NavLink>
                     </li>
                 </ul>
