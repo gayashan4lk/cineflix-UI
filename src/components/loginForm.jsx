@@ -1,7 +1,11 @@
 import React, {Component} from "react";
 
 class LoginForm extends Component {
-    username = React.createRef();
+    state = {
+        account : {username: "", password: "" }
+    }
+
+    /*username = React.createRef();*/ // Create reference to dom object
 
     /*componentDidMount() {
         this.username.current.focus();
@@ -15,6 +19,12 @@ class LoginForm extends Component {
         console.log("submitted");
     };
 
+    handleChange = e => {
+        const account = {...this.state.account};
+        account.username = e.currentTarget.value;
+        this.setState({account: account});
+    }
+
     render() {
         return (
             <div className="login-form-container">
@@ -23,8 +33,10 @@ class LoginForm extends Component {
                     <div className="mb-3">
                         <label htmlFor="username" className="form-label">User name</label>
                         <input
+                            value={this.state.account.username}
+                            onChange={this.handleChange}
                             autoFocus
-                            ref={this.username}
+                            /*ref={this.username}*/
                             id="username"
                             type="text" 
                             className="form-control" />
