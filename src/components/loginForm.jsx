@@ -4,7 +4,10 @@ import Input from "./common/input";
 
 class LoginForm extends Component {
     state = {
-        account : {username: "", password: "" },
+        account : {
+            username: "",
+            password: ""
+        },
         errors : {}
     };
 
@@ -58,7 +61,7 @@ class LoginForm extends Component {
         console.log ("password: ", this.state.account.password);
     };
 
-    validateProperty = ({name, value}) => {
+    /*validateProperty = ({name, value}) => {
         if (name === "username") {
             if (value.trim() === "") return "Username is required.";
             // ... Any other rules?
@@ -67,7 +70,14 @@ class LoginForm extends Component {
             if (value.trim() === "") return "Password is required.";
             // ... Any other rules?
         }
-    }
+    }*/
+
+    validateProperty = ({ name, value }) => {
+        const obj = { [name]: value };
+        const schema = { [name]: this.schema[name] };
+        const { error } = Joi.validate(obj, schema, { abortEarly: true });
+        return error ? error.details[0].message : null;
+    };
 
     handleChange = ({ currentTarget: input }) => {
         const errors = {...this.state.errors};
