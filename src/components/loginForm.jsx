@@ -1,115 +1,52 @@
-import React, {Component} from "react";
-import Joi from "joi-browser";
+import Form from "./common/form";
 import Input from "./common/input";
+import Joi from "joi-browser";
 
-class LoginForm extends Component {
-    state = {
-        account : {
-            username: "",
-            password: ""
-        },
-        errors : {}
-    };
+class LoginForm extends Form {
+  state = {
+    data : {
+      username: "",
+      password: ""
+    },
+    errors : {}
+  };
 
-    schema = {
-        username: Joi.string().required().label("Username"),
-        password: Joi.string().required().label("Password")
-    };
+  schema = {
+    username: Joi.string().required().label("Username"),
+    password: Joi.string().required().label("Password")
+  };
 
-    /*username = React.createRef();*/ // Create reference to dom object
+  doSubmit() {
+    console.log("Submitted");
+  }
 
-    /*componentDidMount() {
-        this.username.current.focus();
-    }*/
-
-    /*validate = () => {
-        const result = Joi.validate(this.state.account, this.schema, { abortEarly: false });
-        console.log(result);
-
-        const errors = {};
-        const {account} = this.state;
-        if (account.username.trim() === "")
-            errors.username = "Username is required.";
-        if (account.password.trim() === "")
-            errors.password = "Password is required.";
-        return Object.keys(errors).length === 0 ? null : errors;
-    };*/
-
-    validate = () => {
-        const options = { abortEarly: false }
-        const result = Joi.validate(this.state.account, this.schema, options);
-        if(!result.error) return null;
-
-        const errors = {};
-        for (let item of result.error.details)
-            errors[item.path[0]] = item.message;
-        return errors;
-    };
-
-    handleSubmit = e => {
-        // console.log("submit clicked");
-
-        e.preventDefault(); // prevents submitting the form to the server
-        const errors = this.validate();
-        this.setState({errors: errors || {}}); // If errors is null then passes empty object. If not runtime error occurs
-        console.log(errors);
-        if (errors) return;
-
-        // Call the server -> save the changes -> redirect user to a another page
-        /*const username = this.username.current.value;*/
-        console.log ("username: ", this.state.account.username);
-        console.log ("password: ", this.state.account.password);
-    };
-
-    /*validateProperty = ({name, value}) => {
-        if (name === "username") {
-            if (value.trim() === "") return "Username is required.";
-            // ... Any other rules?
-        }
-        if (name === "password") {
-            if (value.trim() === "") return "Password is required.";
-            // ... Any other rules?
-        }
-    }*/
-
-    validateProperty = ({ name, value }) => {
-        const obj = { [name]: value };
-        const schema = { [name]: this.schema[name] };
-        const { error } = Joi.validate(obj, schema, { abortEarly: true });
-        return error ? error.details[0].message : null;
-    };
-
-    handleChange = ({ currentTarget: input }) => {
-        const errors = {...this.state.errors};
-        const errorMessage = this.validateProperty(input);
-        if(errorMessage) errors[input.name] = errorMessage;
-        else delete errors[input.name];
-
-        const account = {...this.state.account};
-        account[input.name] = input.value;
-        this.setState({account, errors}); // Same thing as = this.setState({account: account});
-    }
-    // This handleChange function is the same as below!
-    /*handleChange = e => {
-        const account = {...this.state.account};
-        account[e.currentTarget.name] = e.currentTarget.value;
-        this.setState({account}); // Same thing as this! this.setState({account: account});
-    }*/
-
-    render() {
-        const { account, errors } = this.state; // Object destructuring
-        // console.log (account);
-        return (
-            <div className="login-form-container">
-                <h1>Login</h1>
-                <form onSubmit={this.handleSubmit}>
-                    <Input name={"username"} value={account.username} label={"Username"} onChange={this.handleChange} error={errors.username} />
-                    <Input name={"password"} value={account.password} label={"Password"} onChange={this.handleChange} error={errors.password} />
-                    <button type="submit" className="btn btn-primary">Login</button>
-                </form>
-            </div>
-        );
-    }
+  render() {
+    const { data, errors } = this.state; // Object destructuring
+    // console.log (data);
+    return (
+      <div className="login-form-container">
+        <h1>Login</h1>
+        <form onSubmit={this.handleSubmit}>
+          <Input
+            name={"username"}
+            value={data.username}
+            label={"Username"}
+            onChange={this.handleChange}
+            error={errors.username} />
+          <Input
+            name={"password"}
+            value={data.password}
+            label={"Password"}
+            onChange={this.handleChange}
+            error={errors.password} />
+          <button
+            disabled={this.validate()}
+            type="submit"
+            className="btn btn-primary">Login</button>
+        </form>
+      </div>
+    );
+  }
 }
 
 export default LoginForm;
