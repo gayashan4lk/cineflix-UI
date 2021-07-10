@@ -1,22 +1,39 @@
 import React from "react";
 
-const Input = ({name, label, value, error, onChange}) => {
+const Input = ({name, label,error, ...rest}) => {
     return (
         <div className="form-group mb-3">
             <label htmlFor={name} className="form-label">{label}</label>
             <input
-                value={value}
-                onChange={onChange}
-                id={name}
-                name={name}
-                type="text"
-                className="form-control" />
-
+              {...rest}
+              id={name}
+              name={name}
+              className="form-control"
+            />
             {error && <div className="alert alert-danger">{error}</div>}
         </div>
     );
 };
-// This function is the same thing as below!
+
+// Second Implementation
+/*const Input = ({type, name, label, value, error, onChange}) => {
+  return (
+    <div className="form-group mb-3">
+      <label htmlFor={name} className="form-label">{label}</label>
+      <input
+        value={value}
+        onChange={onChange}
+        id={name}
+        name={name}
+        type={type}
+        className="form-control"
+      />
+      {error && <div className="alert alert-danger">{error}</div>}
+    </div>
+  );
+};*/
+
+// First Implementation
 /*const Input = (props) => {
     return (
         <div className="form-group mb-3">
