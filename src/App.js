@@ -8,7 +8,8 @@ import NotFound from "./components/notFound";
 import Customers from "./components/customers";
 import Rentals from "./components/rentals";
 import MovieForm from "./components/movieForm";
-import LoginFormOld from "./components/loginForm";
+import LoginForm from "./components/loginForm";
+import RegisterForm from "./components/registerForm";
 
 class App extends Component {
   render() {
@@ -18,7 +19,8 @@ class App extends Component {
                 <NavBar />
                 <div className="content">
                     <Switch>
-                        <Route path="/login" component={LoginFormOld} />
+                        <Route path="/login" component={LoginForm} />
+                      <Route path="/register" component={RegisterForm} />
                         <Route path="/movies/:id" component={MovieForm}/>
                         <Route path="/rentals" component={Rentals}/>
                         <Route path="/customers" component={Customers}/>
