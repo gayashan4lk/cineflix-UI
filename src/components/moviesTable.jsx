@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 const MoviesTable = (props) => {
     const { movies, onDelete, onLike, onSort } = props;
-
+    // console.log("movies:", movies);
     return (
         <table className="table">
             <thead>

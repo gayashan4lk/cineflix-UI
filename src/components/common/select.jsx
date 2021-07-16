@@ -13,7 +13,7 @@ const Select = ({name, label, items, error, ...rest}) => {
         {items.map(item =>
           <option
             key={item._id}
-            value={item.name}
+            value={item._id}
           >
             {item.name}
           </option>

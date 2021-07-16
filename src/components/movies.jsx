@@ -60,6 +60,7 @@ class Movies extends Component{
 
     render() {
         const count = this.state.movies.length;
+        console.log(this.state.movies);
 
         // Object destructuring
         const {
