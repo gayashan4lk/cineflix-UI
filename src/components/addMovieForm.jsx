@@ -3,6 +3,7 @@ import Joi from "joi-browser";
 import {getGenres} from "../services/fakeGenreService";
 import {saveMovie} from "../services/fakeMovieService";
 import React from "react";
+import {withRouter} from "react-router-dom";
 
 class AddMovieForm extends Form {
   state = {
@@ -36,8 +37,9 @@ class AddMovieForm extends Form {
       dailyRentalRate: Number(data.dailyRentalRate),
     }
     console.log("movie:", movie)
-    saveMovie(movie);
-    // console.log("Movie submitted");
+    const success =  saveMovie(movie);
+    console.log("Movie submitted:", success);
+    this.props.history.push('/movies');
   }
 
   componentDidMount() {
@@ -55,9 +57,10 @@ class AddMovieForm extends Form {
         {this.renderInput("numberInStock", "Number in Stock")}
         {this.renderInput("dailyRentalRate", "Rate")}
         {this.renderButton("Save")}
+
         </form>
       </div>
     );
   }
 }
-export default AddMovieForm;
+export default withRouter(AddMovieForm);
