@@ -10,10 +10,10 @@ class AddMovieForm extends Form {
       title: "",
       genreId: "",
       numberInStock: "",
-      dailyRentalRate: ""
+      dailyRentalRate: "",
     },
     errors: {},
-    genres: []
+    genres: [],
   }
   schema = {
     title: Joi.string().required().label("Title"),
@@ -23,10 +23,21 @@ class AddMovieForm extends Form {
   }
 
   doSubmit() {
-    const movie = this.state.data;
-    console.log(movie);
+    const data = this.state.data;
+    console.log("data:", data);
+    const movie = {
+      _id: "",
+      title: data.title,
+      genre: {
+        _id: data.genreId,
+        name: "",
+      },
+      numberInStock: Number(data.numberInStock),
+      dailyRentalRate: Number(data.dailyRentalRate),
+    }
+    console.log("movie:", movie)
     saveMovie(movie);
-    console.log("Movie submitted");
+    // console.log("Movie submitted");
   }
 
   componentDidMount() {
