@@ -1,6 +1,7 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import Joi from "joi-browser";
 import Input from "./input";
+import Select from "./select";
 
 class Form extends Component {
   state = {
@@ -32,7 +33,7 @@ class Form extends Component {
     e.preventDefault(); // prevents submitting the form to the server
     const errors = this.validate();
     this.setState({errors: errors || {}}); // If errors is null then passes empty object. If not runtime error occurs
-    console.log(errors);
+    console.log("errors:",errors);
     if (errors) return;
 
     //Call the Server
@@ -53,7 +54,7 @@ class Form extends Component {
   renderButton(label) {
     return (
       <button
-        disabled={this.validate()}
+        /*disabled={this.validate()}*/
         type="submit"
         className="btn btn-primary"
       >
@@ -72,6 +73,19 @@ class Form extends Component {
         label={label}
         onChange={this.handleChange}
         error={errors[name]}
+      />
+    );
+  }
+
+  renderSelect(name, label, items) {
+    const { data, errors } = this.state;
+    return(
+      <Select
+        name={name}
+        label={label}
+        items={items}
+        error={errors[name]}
+        onChange={this.handleChange}
       />
     );
   }

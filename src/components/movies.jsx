@@ -6,6 +6,7 @@ import {getMovies} from "../services/fakeMovieService";
 import {getGenres} from "../services/fakeGenreService";
 import {paginate} from "../utilities/paginate";
 import _ from "lodash";
+import {NavLink} from "react-router-dom";
 
 class Movies extends Component{
     state = {
@@ -91,6 +92,9 @@ class Movies extends Component{
                         />
                     </div>
                     <div className="col">
+                        <NavLink to="/movies/new">
+                            <button className="btn btn-primary mb-3">New Movie</button>
+                        </NavLink>
                         <div className="movie-container">
                             <p>Showing {filtered.length} movies in the database. <i className="bi bi-heart"> </i>
                             </p>
