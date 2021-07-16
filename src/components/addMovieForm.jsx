@@ -17,8 +17,8 @@ class AddMovieForm extends Form {
   schema = {
     title: Joi.string().required().label("Title"),
     genre: Joi.string().required().label("Genre"),
-    numberInStock: Joi.string().required().label("Number in Stock"),
-    rate: Joi.string().required().label("Rate"),
+    numberInStock: Joi.number().integer().min(0).required().label("Number in Stock"),
+    rate: Joi.number().min(0).max(10).required().label("Rate"),
   }
 
   doSubmit() {
@@ -26,7 +26,7 @@ class AddMovieForm extends Form {
   }
 
   componentDidMount() {
-    const genres = [...getGenres()];
+    const genres = [{_id:"", name:""},...getGenres()];
     this.setState({genres: genres});
   }
 
