@@ -1,8 +1,8 @@
-# My First Step to Learn React
+# Clean and simple UI for a movie streaming service implementing single-page application architecture.
 
-# Cinetv
+# Cineflix-UI
 
-Single page web application with react
+Single-page web application with react
 
 [DEMO](https://next-markdown-blog-drab.vercel.app/)
 
