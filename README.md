@@ -2,7 +2,7 @@
 
 ## Clean and simple UI for a movie streaming service implementing single-page application architecture.
 
-Preview app from [this link](https://cineflix-ui.netlify.app/movies).
+Preview app from [this link](https://cineflix-ui.netlify.app).
 
 ## Usage
 
