@@ -1,10 +1,8 @@
-# Clean and simple UI for a movie streaming service implementing single-page application architecture.
-
 # Cineflix-UI
 
-Single-page web application with react
+## Clean and simple UI for a movie streaming service implementing single-page application architecture.
 
-[DEMO](https://next-markdown-blog-drab.vercel.app/)
+Preview app from [this link](https://cineflix-ui.netlify.app/movies).
 
 ## Usage
 
